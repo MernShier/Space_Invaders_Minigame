@@ -6,12 +6,10 @@ using UnityEngine;
 public class EnemyArmy : MonoBehaviour
 {
     [SerializeField] private int columns, rows;
-    [SerializeField] private float stepTime, stepValue;
     [SerializeField] private GameObject enemy, enemyColumn;
     [SerializeField] private WinLose winLose;
-    [SerializeField] private EnemyCombat enemyCombat;
+    public float stepTime, stepValue;
     public int enemies;
-    public float effectivBulletAmountValue;
 
     private void Awake()
     {
@@ -24,9 +22,6 @@ public class EnemyArmy : MonoBehaviour
                 enemies++;
             }
         }
-
-        effectivBulletAmountValue =
-            enemies / ((enemyCombat.maxReload + enemyCombat.minReload) / 2) * (stepValue/stepTime) * 5 + 1;
     }
     private void Start()
     {

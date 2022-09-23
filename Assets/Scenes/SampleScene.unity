@@ -1704,7 +1704,7 @@ MonoBehaviour:
   stepValue: 0.1
   enemy: {fileID: 905411539792157559, guid: 129575f738f67cb4481a03f8c078f904, type: 3}
   enemyColumn: {fileID: 5450758481665694026, guid: bff67c753d6e56341a3b4bd44d044a29, type: 3}
-  winLose: {fileID: 0}
+  winLose: {fileID: 979329728}
   enemyCombat: {fileID: 843651507}
   enemies: 0
   effectivBulletAmountValue: 0

@@ -10,15 +10,15 @@ public class EnemyCombat : MonoBehaviour
     private readonly System.Random _rnd = new System.Random();
     [SerializeField] private EnemyArmy enemyArmy;
     public float minReload, maxReload;
-    [SerializeField] private float reloadTime, enemyBulletPoolAmount;
+    private float _reloadTime;
+    private int _effectiveBulletAmountValue, _bulletCounter;
     [SerializeField] private GameObject[] enemies, bullets;
     [SerializeField] private GameObject bullet, enemyBulletsPool;
-    [SerializeField] private int bulletCounter;
     private void Start()
     {
-        enemyBulletPoolAmount = (int)enemyArmy.effectivBulletAmountValue;
-        bullets = new GameObject[(int)enemyBulletPoolAmount];
-        for (int i = 0; i < (int)enemyBulletPoolAmount; i++)
+        _effectiveBulletAmountValue = (int)(enemyArmy.enemies / ((maxReload + minReload) / 2) * (enemyArmy.stepValue / enemyArmy.stepTime) * 3 + 5);
+        bullets = new GameObject[_effectiveBulletAmountValue];
+        for (int i = 0; i < _effectiveBulletAmountValue; i++)
         {
             bullets[i] = Instantiate(bullet, enemyBulletsPool.transform.position, Quaternion.identity, enemyBulletsPool.transform);
             bullets[i].SetActive(false);
@@ -29,8 +29,8 @@ public class EnemyCombat : MonoBehaviour
     {
         while (true)
         {
-            reloadTime = Random.Range(minReload, maxReload);
-            yield return new WaitForSeconds(reloadTime);
+            _reloadTime = Random.Range(minReload, maxReload);
+            yield return new WaitForSeconds(_reloadTime);
             Shoot(GetShootingEnemy());
         }
     }
@@ -41,15 +41,15 @@ public class EnemyCombat : MonoBehaviour
     }
     private void Shoot(GameObject shootingEnemy)
     {
-        bullets[bulletCounter].transform.position = shootingEnemy.transform.position;
-        bullets[bulletCounter].SetActive(true);
-        if (bulletCounter < enemyBulletPoolAmount)
+        bullets[_bulletCounter].transform.position = shootingEnemy.transform.position;
+        bullets[_bulletCounter].SetActive(true);
+        if (_bulletCounter < _effectiveBulletAmountValue)
         {
-            bulletCounter++;
+            _bulletCounter++;
         }
-        if (bulletCounter == (int)enemyBulletPoolAmount)
+        if (_bulletCounter == _effectiveBulletAmountValue)
         {
-            bulletCounter = 0;
+            _bulletCounter = 0;
         }
     }
 }
