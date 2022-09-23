@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c49b48f999d0f94fa57a508878f8c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  mainGameManager: {fileID: 2333572351092948446, guid: 04cb4212c823a774b9b5fed6fbf5d887, type: 3}
+  health: 1
+  score: {fileID: 0}
   enemyArmy: {fileID: 0}
   texts: {fileID: 0}
   gameConditions: {fileID: 0}

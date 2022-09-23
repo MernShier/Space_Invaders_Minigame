@@ -10,7 +10,7 @@ public class Texts : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private Text scoreText, winText;
     [SerializeField] private GameObject playerHealthUIContainer;
-    [SerializeField] private MainGameManager mainGameManager;
+    [SerializeField] private Score score;
 
     private void Start()
     {
@@ -19,12 +19,12 @@ public class Texts : MonoBehaviour
 
     public void ScoreTextUpdate()
     {
-        scoreText.text = $"SCORE {mainGameManager.score}";
+        scoreText.text = $"SCORE {score.score}";
     }
 
     public void WinTextUpdate()
     {
-        winText.text = $"YOU WON\nTOTAL SCORE {mainGameManager.score}";
+        winText.text = $"YOU WON\nTOTAL SCORE {score.score}";
     }
     public void PlayerHealthUIUpdate()
     {

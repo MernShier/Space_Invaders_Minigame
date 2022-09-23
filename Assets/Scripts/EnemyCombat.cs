@@ -16,7 +16,7 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] private int bulletCounter;
     private void Start()
     {
-        enemyBulletPoolAmount = (int)enemyArmy.value;
+        enemyBulletPoolAmount = (int)enemyArmy.effectivBulletAmountValue;
         bullets = new GameObject[(int)enemyBulletPoolAmount];
         for (int i = 0; i < (int)enemyBulletPoolAmount; i++)
         {

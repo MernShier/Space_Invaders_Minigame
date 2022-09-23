@@ -6,19 +6,17 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] public int health;
-    [SerializeField] private MainGameManager mainGameManager;
+    [SerializeField] private Score score;
     [SerializeField] private EnemyArmy enemyArmy;
     [SerializeField] private Texts texts;
-    [SerializeField] private GameConditions gameConditions;
+    [SerializeField] private WinLose winLose;
     private void Start()
     {
         var o = GameObject.FindGameObjectWithTag("Manager");
         texts = o.GetComponent<Texts>();
-        gameConditions = o.GetComponent<GameConditions>();
-        mainGameManager = o.GetComponent<MainGameManager>();
+        winLose = o.GetComponent<WinLose>();
+        score = o.GetComponent<Score>();
         enemyArmy = GameObject.FindGameObjectWithTag("EnemySpawner").GetComponent<EnemyArmy>();
-        
-        health = mainGameManager.enemyHealth;
     }
     private void Update()
     {
@@ -29,7 +27,7 @@ public class Enemy : MonoBehaviour
     }
     private void Death()
     {
-        mainGameManager.score+=mainGameManager.scorePerKill;
+        score.score+=score.scorePerKill;
         enemyArmy.enemies--;
         texts.ScoreTextUpdate();
         Destroy(gameObject);
@@ -39,7 +37,7 @@ public class Enemy : MonoBehaviour
     {
         if (col.CompareTag("PlayerLine"))
         {
-            gameConditions.GameLose();
+            winLose.GameLose();
         }
     }
 }

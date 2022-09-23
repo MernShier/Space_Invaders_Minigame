@@ -5,11 +5,10 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private Manager manager;
-    [SerializeField] private GameConditions gameConditions;
+    [SerializeField] private WinLose winLose;
     private void Update()
     {
-        if (gameConditions.lost != true && gameConditions.won != true)
+        if (winLose.lost != true && winLose.won != true)
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -28,11 +27,11 @@ public class InputManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (gameConditions.lost || gameConditions.won)
+            if (winLose.lost || winLose.won)
             {
-                manager.Pause();
+               Manager.Pause();
             }
-            manager.LoadSceneBySceneIndex(0);
+            Manager.LoadSceneBySceneIndex(0);
         }
     }
 }

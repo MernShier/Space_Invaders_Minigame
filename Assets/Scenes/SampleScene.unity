@@ -382,7 +382,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 979329726}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Manager, Assembly-CSharp
         m_MethodName: LoadSceneBySceneIndex
         m_Mode: 3
@@ -394,7 +394,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 979329726}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Manager, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 1
@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 979329726}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Manager, Assembly-CSharp
         m_MethodName: LoadSceneBySceneIndex
         m_Mode: 3
@@ -1402,7 +1402,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 979329726}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Manager, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 1
@@ -1704,10 +1704,10 @@ MonoBehaviour:
   stepValue: 0.1
   enemy: {fileID: 905411539792157559, guid: 129575f738f67cb4481a03f8c078f904, type: 3}
   enemyColumn: {fileID: 5450758481665694026, guid: bff67c753d6e56341a3b4bd44d044a29, type: 3}
-  gameConditions: {fileID: 979329728}
+  winLose: {fileID: 0}
   enemyCombat: {fileID: 843651507}
   enemies: 0
-  value: 0
+  effectivBulletAmountValue: 0
 --- !u!114 &843651507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2097,9 +2097,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 979329724}
-  - component: {fileID: 979329726}
   - component: {fileID: 979329725}
-  - component: {fileID: 979329723}
   - component: {fileID: 979329729}
   - component: {fileID: 979329727}
   - component: {fileID: 979329728}
@@ -2110,19 +2108,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &979329723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979329722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71a3be36bc8b9246829734812d4609e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainGameManager: {fileID: 2333572351092948446, guid: 04cb4212c823a774b9b5fed6fbf5d887, type: 3}
 --- !u!4 &979329724
 Transform:
   m_ObjectHideFlags: 0
@@ -2150,20 +2135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1950022694}
-  manager: {fileID: 979329726}
-  gameConditions: {fileID: 979329728}
---- !u!114 &979329726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979329722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c31946a2734ed164ab00ad8f376e3484, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  winLose: {fileID: 979329728}
 --- !u!114 &979329727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2180,7 +2152,7 @@ MonoBehaviour:
   scoreText: {fileID: 1542811519}
   winText: {fileID: 895897348}
   playerHealthUIContainer: {fileID: 1932497018}
-  mainGameManager: {fileID: 979329729}
+  score: {fileID: 979329729}
 --- !u!114 &979329728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2194,7 +2166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texts: {fileID: 979329727}
-  manager: {fileID: 979329726}
   losePanel: {fileID: 2076814187}
   winPanel: {fileID: 1236532485}
   lost: 0
@@ -2212,8 +2183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  scorePerKill: 100
-  enemyHealth: 2
+  scorePerKill: 75
 --- !u!1 &1006769111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 391028957903501151, guid: ed8bdb7526e3de046aacda389f55ee92, type: 3}
@@ -3016,10 +2986,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -4113,7 +4083,7 @@ MonoBehaviour:
   - {fileID: 1721333706}
   - {fileID: 255603709}
   - {fileID: 32302651}
-  gameConditions: {fileID: 979329728}
+  winLose: {fileID: 979329728}
   playerBorders: 7.5
   playerSpeed: 15
 --- !u!212 &1950022695

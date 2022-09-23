@@ -8,10 +8,10 @@ public class EnemyArmy : MonoBehaviour
     [SerializeField] private int columns, rows;
     [SerializeField] private float stepTime, stepValue;
     [SerializeField] private GameObject enemy, enemyColumn;
-    [SerializeField] private GameConditions gameConditions;
+    [SerializeField] private WinLose winLose;
     [SerializeField] private EnemyCombat enemyCombat;
     public int enemies;
-    public float value;
+    public float effectivBulletAmountValue;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class EnemyArmy : MonoBehaviour
             }
         }
 
-        value =
+        effectivBulletAmountValue =
             enemies / ((enemyCombat.maxReload + enemyCombat.minReload) / 2) * (stepValue/stepTime) * 5 + 1;
     }
     private void Start()
@@ -34,7 +34,7 @@ public class EnemyArmy : MonoBehaviour
     }
     private void Update()
     {
-        if (enemies == 0 && gameConditions.won != true) gameConditions.GameWin();
+        if (enemies == 0 && winLose.won != true) winLose.GameWin();
     }
     private IEnumerator EnemyMover()
     {

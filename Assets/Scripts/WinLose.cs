@@ -4,26 +4,25 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class GameConditions : MonoBehaviour
+public class WinLose : MonoBehaviour
 {
     [SerializeField] private Texts texts;
-    [SerializeField] private Manager manager;
     [SerializeField] private GameObject losePanel, winPanel;
     [HideInInspector] public bool lost, won;
     public void GameLose()
     {
         if (lost) return;
-        manager.Pause();
-        manager.SetTrue(losePanel);
+        Manager.Pause();
+        losePanel.SetActive(true);
         lost = true;
     }
 
     public void GameWin()
     {
         if (won) return;
-        manager.Pause();
+        Manager.Pause();
         texts.WinTextUpdate();
-        manager.SetTrue(winPanel);
+        winPanel.SetActive(true);
         won = true;
     }
 }

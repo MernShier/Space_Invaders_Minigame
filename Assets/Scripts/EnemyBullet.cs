@@ -11,7 +11,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void Start()
     {
-        texts = GameObject.FindObjectOfType<Texts>();
+        texts = FindObjectOfType<Texts>();
     }
 
     private void Update()
@@ -25,8 +25,9 @@ public class EnemyBullet : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            col.GetComponent<Player>().PlayerCombat.PlayerHealth -= bulletDamage;
-            col.GetComponent<Player>().PlayerHealthCheck();
+            var o = col.GetComponent<Player>();
+            o.PlayerCombat.PlayerHealth -= bulletDamage;
+            o.PlayerHealthCheck();
             texts.PlayerHealthUIUpdate();
             gameObject.SetActive(false);
         }   
